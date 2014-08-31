@@ -15,12 +15,9 @@ First, add the dependency to **phpmentors/proxy-url-rewrite-bundle** into your *
 
 ```json
 {
-    ...
     "require": {
-        ...
         "phpmentors/proxy-url-rewrite-bundle": "~1.0@dev"
     },
-    ...
 }
 ```
 
@@ -54,7 +51,7 @@ app/config/config_prod.yml:
 ...
 phpmentors_proxy_url_rewrite:
     proxy_urls:
-        "!^/.*!": "/foo/bar/"
+        "!^.*!": "/foo/bar"
 ```
 
 app/config/config_prod.yml:
