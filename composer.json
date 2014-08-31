@@ -1,0 +1,31 @@
+{
+    "name": "phpmentors/proxy-url-rewrite-bundle",
+    "type": "symfony-bundle",
+    "description": "A Symfony bundle to rewrite URLs for applications behind reverse proxies",
+    "keywords": ["symfony", "proxy", "url rewriting"],
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "KUBO Atsuhiro",
+            "email": "kubo@iteman.jp"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/config": "~2.3",
+        "symfony/dependency-injection": "~2.3",
+        "symfony/framework-bundle": "~2.3",
+        "symfony/http-kernel": "~2.3",
+        "symfony/routing": "~2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPMentors\\ProxyURLRewriteBundle\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
