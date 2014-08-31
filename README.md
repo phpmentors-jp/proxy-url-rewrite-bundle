@@ -15,9 +15,12 @@ First, add the dependency to **phpmentors/proxy-url-rewrite-bundle** into your *
 
 ```json
 {
-    "require-dev": {
+    ...
+    "require": {
+        ...
         "phpmentors/proxy-url-rewrite-bundle": "~1.0@dev"
-    }
+    },
+    ...
 }
 ```
 
