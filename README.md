@@ -2,6 +2,10 @@
 
 A Symfony bundle to rewrite URLs for applications behind reverse proxies
 
+[![Total Downloads](https://poser.pugx.org/phpmentors/proxy-url-rewrite-bundle/downloads.png)](https://packagist.org/packages/phpmentors/proxy-url-rewrite-bundle)
+[![Latest Stable Version](https://poser.pugx.org/phpmentors/proxy-url-rewrite-bundle/v/stable.png)](https://packagist.org/packages/phpmentors/proxy-url-rewrite-bundle)
+[![Latest Unstable Version](https://poser.pugx.org/phpmentors/proxy-url-rewrite-bundle/v/unstable.png)](https://packagist.org/packages/phpmentors/proxy-url-rewrite-bundle)
+
 ## Features
 
 * URL rewriting for [Controller::generateUrl()](http://symfony.com/doc/current/quick_tour/the_controller.html#redirecting-and-forwarding) in controllers
