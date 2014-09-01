@@ -58,7 +58,7 @@ phpmentors_proxy_url_rewrite:
         "!^.*!": "/foo/bar"
 ```
 
-app/config/config_prod.yml:
+app/config/config_dev.yml:
 
 ```yaml
 ...
