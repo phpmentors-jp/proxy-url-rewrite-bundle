@@ -24,11 +24,6 @@ class PHPMentorsProxyURLRewriteBundle extends Bundle
     /**
      * {@inheritDoc}
      */
-//     protected $name = 'PhpmentorsProxyUrlRewriteBundle';
-
-    /**
-     * {@inheritDoc}
-     */
     public function build(ContainerBuilder $container)
     {
         $beforeOptimizationPasses = $container->getCompilerPassConfig()->getBeforeOptimizationPasses();
