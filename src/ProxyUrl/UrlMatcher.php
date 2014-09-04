@@ -14,14 +14,22 @@ namespace PHPMentors\ProxyURLRewriteBundle\ProxyUrl;
 
 class UrlMatcher
 {
+    /**
+     * @var \PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection
+     */
     private $proxyUrlCollection;
 
+    /**
+     * @param \PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection $proxyUrlCollection
+     */
     public function __construct(ProxyUrlCollection $proxyUrlCollection)
     {
         $this->proxyUrlCollection = $proxyUrlCollection;
     }
 
     /**
+     * @param  string                                                          $pathinfo
+     * @return \PHPMentors\ProxyURLRewriteBundle\ProxyUrl\MatchedProxyUrl|null
      */
     public function match($pathinfo)
     {
