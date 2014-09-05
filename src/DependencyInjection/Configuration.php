@@ -36,7 +36,7 @@ class Configuration implements ConfigurationInterface
                         ->cannotBeEmpty()
                         ->validate()
                             ->always(function ($v) {
-                                if (parse_url($v) === false) throw new \InvalidArgumentException(sprintf('The path "base_url" cannot contain malformed URL, but got "%s".', $v));
+                                if (parse_url($v) === false) throw new \InvalidArgumentException(sprintf('The value of a Proxy URL cannot contain malformed URL, but got "%s".', $v));
                                 return $v;
                             })
                         ->end()
