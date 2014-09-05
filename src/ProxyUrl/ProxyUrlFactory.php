@@ -21,13 +21,37 @@ class ProxyUrlFactory
      */
     public function create($path, $proxyUrl)
     {
-        $proxyUrlComponents = parse_url($proxyUrl);
+        list($proxyUrlPath, $proxyUrlHost, $proxyUrlScheme) = static::parseUrl($proxyUrl);
 
-        return new ProxyUrl(
-            $path,
-            $proxyUrlComponents['path'],
-            array_key_exists('host', $proxyUrlComponents) ? $proxyUrlComponents['host'] : null,
-            array_key_exists('scheme', $proxyUrlComponents) ? $proxyUrlComponents['scheme'] : null
-        );
+        return new ProxyUrl($path, $proxyUrlPath, $proxyUrlHost, $proxyUrlScheme);
+    }
+
+    /**
+     * @param  string                    $url
+     * @return array
+     * @throws \UnexpectedValueException
+     * @link http://php.net/manual/en/function.parse-url.php
+     */
+    public static function parseUrl($url)
+    {
+        $components = parse_url($url);
+        $path = array_key_exists('path', $components) ? $components['path'] : null;
+        $host = array_key_exists('host', $components) ? $components['host'] : null;
+        $scheme = array_key_exists('scheme', $components) ? $components['scheme'] : null;
+
+        if (strpos($path, '//') === 0) {
+            $endOfHostPosition = strpos($path, '/', 2);
+            if ($endOfHostPosition === false) { // //example.com
+                $host = substr($path, 2);
+                $path = null;
+            } elseif ($endOfHostPosition == 2) {
+                throw new \UnexpectedValueException(sprintf('The URL "%s" is malformed.', $url));
+            } elseif ($endOfHostPosition > 2) {
+                $host = substr($path, 2, $endOfHostPosition - 2);
+                $path = substr($path, $endOfHostPosition);
+            }
+        }
+
+        return array($path, $host, $scheme);
     }
 }
