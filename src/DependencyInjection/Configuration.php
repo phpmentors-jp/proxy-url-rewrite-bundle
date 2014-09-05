@@ -15,6 +15,8 @@ namespace PHPMentors\ProxyURLRewriteBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlFactory;
+
 class Configuration implements ConfigurationInterface
 {
     /**
@@ -36,9 +38,12 @@ class Configuration implements ConfigurationInterface
                         ->cannotBeEmpty()
                         ->validate()
                             ->always(function ($v) {
-                                $components = parse_url($v);
-                                if ($components === false) throw new \InvalidArgumentException(sprintf('The value of a Proxy URL cannot contain malformed URL, but got "%s".', $v));
-                                if (array_key_exists('port', $components)) throw new \InvalidArgumentException(sprintf('The value of a Proxy URL cannot contain port number, but got "%s".', $v));
+                                try {
+                                    ProxyUrlFactory::parseUrl($v);
+                                } catch (\UnexpectedValueException $e) {
+                                    throw new \InvalidArgumentException($e->getMessage());
+                                }
+
                                 return $v;
                             })
                         ->end()
