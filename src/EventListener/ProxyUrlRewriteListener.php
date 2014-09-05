@@ -65,6 +65,12 @@ class ProxyUrlRewriteListener
                 if ($matchedProxyUrl->getHost() !== null) {
                     $this->router->getContext()->setHost($matchedProxyUrl->getHost());
                 }
+
+                if ($this->router->getContext()->getScheme() == 'http') {
+                    $this->router->getContext()->setHttpPort('80');
+                } elseif ($this->router->getContext()->getScheme() == 'https') {
+                    $this->router->getContext()->setHttpsPort('443');
+                }
             }
         }
     }
