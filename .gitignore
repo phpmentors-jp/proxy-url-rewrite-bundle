@@ -1,2 +1,6 @@
 /composer.lock
 /vendor/
+/tests/Feature/app/cache/*
+/tests/Feature/app/logs/*
+!/tests/Feature/app/cache/.gitkeep
+!/tests/Feature/app/logs/.gitkeep
