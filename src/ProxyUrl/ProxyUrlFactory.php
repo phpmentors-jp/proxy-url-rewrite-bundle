@@ -35,17 +35,25 @@ class ProxyUrlFactory
     public static function parseUrl($url)
     {
         $components = parse_url($url);
+        if ($components === false) {
+            throw new \UnexpectedValueException(sprintf('The proxy URL "%s" is malformed.', $url));
+        }
+
+        if (array_key_exists('port', $components)) {
+            throw new \UnexpectedValueException(sprintf('The proxy URL "%s" cannot contain port number.', $url));
+        }
+
         $path = array_key_exists('path', $components) ? $components['path'] : null;
         $host = array_key_exists('host', $components) ? $components['host'] : null;
         $scheme = array_key_exists('scheme', $components) ? $components['scheme'] : null;
 
         if (strpos($path, '//') === 0) {
             $endOfHostPosition = strpos($path, '/', 2);
-            if ($endOfHostPosition === false) { // //example.com
+            if ($endOfHostPosition === false) {
                 $host = substr($path, 2);
                 $path = null;
             } elseif ($endOfHostPosition == 2) {
-                throw new \UnexpectedValueException(sprintf('The URL "%s" is malformed.', $url));
+                throw new \UnexpectedValueException(sprintf('The proxy URL "%s" is malformed.', $url));
             } elseif ($endOfHostPosition > 2) {
                 $host = substr($path, 2, $endOfHostPosition - 2);
                 $path = substr($path, $endOfHostPosition);
