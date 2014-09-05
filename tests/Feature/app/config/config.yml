@@ -1,0 +1,9 @@
+framework:
+    secret: "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+    templating:
+        engines:
+            - twig
+    test: true
+    validation: false

@@ -1,0 +1,9 @@
+test_url_rewriting_in_controllers_index:
+    path: /url-rewriting-in-controllers/
+    defaults: { _controller: "TestBundle:UrlRewritingInControllers:index" }
+    methods: [GET]
+
+test_url_rewriting_in_templates_index:
+    path: /url-rewriting-in-templates/
+    defaults: { _controller: "TestBundle:UrlRewritingInTemplates:index" }
+    methods: [GET]

@@ -1,0 +1,8 @@
+{% extends "TestBundle::layout.html.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<div>{{ referenceType }}</div>
+<div id="asset">{{ asset('/bundles/test/foo.png', null, referenceType) }}</div>
+{% endblock %}
