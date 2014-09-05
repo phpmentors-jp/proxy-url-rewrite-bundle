@@ -21,6 +21,13 @@ class ProxyUrlFactory
      */
     public function create($path, $proxyUrl)
     {
-        return new ProxyUrl($path, $proxyUrl);
+        $proxyUrlComponents = parse_url($proxyUrl);
+
+        return new ProxyUrl(
+            $path,
+            $proxyUrlComponents['path'],
+            array_key_exists('host', $proxyUrlComponents) ? $proxyUrlComponents['host'] : null,
+            array_key_exists('scheme', $proxyUrlComponents) ? $proxyUrlComponents['scheme'] : null
+        );
     }
 }
