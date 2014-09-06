@@ -5,6 +5,7 @@ A Symfony bundle to rewrite URLs for applications behind reverse proxies
 [![Total Downloads](https://poser.pugx.org/phpmentors/proxy-url-rewrite-bundle/downloads.png)](https://packagist.org/packages/phpmentors/proxy-url-rewrite-bundle)
 [![Latest Stable Version](https://poser.pugx.org/phpmentors/proxy-url-rewrite-bundle/v/stable.png)](https://packagist.org/packages/phpmentors/proxy-url-rewrite-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/phpmentors/proxy-url-rewrite-bundle/v/unstable.png)](https://packagist.org/packages/phpmentors/proxy-url-rewrite-bundle)
+[![Build Status](https://travis-ci.org/phpmentors-jp/proxy-url-rewrite-bundle.svg?branch=master)](https://travis-ci.org/phpmentors-jp/proxy-url-rewrite-bundle)
 
 ## Features
 
