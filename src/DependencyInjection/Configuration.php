@@ -27,10 +27,8 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $treeBuilder->root('phpmentors_proxy_url_rewrite')
             ->fixXmlConfig('proxy_url')
+            ->canBeDisabled()
             ->children()
-                ->booleanNode('enabled')
-                    ->defaultTrue()
-                ->end()
                 ->arrayNode('proxy_urls')
                     ->useAttributeAsKey('path')
                     ->prototype('scalar')
