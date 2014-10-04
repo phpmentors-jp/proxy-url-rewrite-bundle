@@ -5,7 +5,7 @@ A Symfony bundle to rewrite URLs for applications behind reverse proxies
 [![Total Downloads](https://poser.pugx.org/phpmentors/proxy-url-rewrite-bundle/downloads.png)](https://packagist.org/packages/phpmentors/proxy-url-rewrite-bundle)
 [![Latest Stable Version](https://poser.pugx.org/phpmentors/proxy-url-rewrite-bundle/v/stable.png)](https://packagist.org/packages/phpmentors/proxy-url-rewrite-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/phpmentors/proxy-url-rewrite-bundle/v/unstable.png)](https://packagist.org/packages/phpmentors/proxy-url-rewrite-bundle)
-[![Build Status](https://travis-ci.org/phpmentors-jp/proxy-url-rewrite-bundle.svg?branch=1.0)](https://travis-ci.org/phpmentors-jp/proxy-url-rewrite-bundle)
+[![Build Status](https://travis-ci.org/phpmentors-jp/proxy-url-rewrite-bundle.svg?branch=master)](https://travis-ci.org/phpmentors-jp/proxy-url-rewrite-bundle)
 
 ## Features
 
@@ -21,7 +21,7 @@ First, add the dependency to `phpmentors/proxy-url-rewrite-bundle` into your `co
 ```json
 {
     "require": {
-        "phpmentors/proxy-url-rewrite-bundle": "1.0.*"
+        "phpmentors/proxy-url-rewrite-bundle": "~1.1@dev"
     },
 }
 ```
