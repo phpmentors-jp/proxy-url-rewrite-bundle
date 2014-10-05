@@ -22,7 +22,7 @@ First, add the dependency to `phpmentors/proxy-url-rewrite-bundle` into your `co
 {
     "require": {
         "phpmentors/proxy-url-rewrite-bundle": "~1.1@dev"
-    },
+    }
 }
 ```
 
