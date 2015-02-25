@@ -24,12 +24,12 @@ use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\UrlMatcher;
 class CoreAssetsHelper extends \Symfony\Component\Templating\Helper\CoreAssetsHelper
 {
     /**
-     * @var \PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection
+     * @var ProxyUrlCollection
      */
     private $proxyUrlCollection;
 
     /**
-     * @param \PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection $proxyUrlCollection
+     * @param ProxyUrlCollection $proxyUrlCollection
      */
     public function setProxyUrlCollection(ProxyUrlCollection $proxyUrlCollection)
     {

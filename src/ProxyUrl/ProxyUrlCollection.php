@@ -20,8 +20,8 @@ class ProxyUrlCollection implements \IteratorAggregate, \Countable
     private $proxyUrls = array();
 
     /**
-     * @param string                                              $routeName
-     * @param \PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrl $proxyUrl
+     * @param string   $routeName
+     * @param ProxyUrl $proxyUrl
      */
     public function add($routeName, ProxyUrl $proxyUrl)
     {

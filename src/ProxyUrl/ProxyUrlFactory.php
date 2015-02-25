@@ -15,9 +15,9 @@ namespace PHPMentors\ProxyURLRewriteBundle\ProxyUrl;
 class ProxyUrlFactory
 {
     /**
-     * @param  string                                             $path
-     * @param  string                                             $proxyUrl
-     * @return \PHPMentors\ProxyURLRewriteBundle\Routing\ProxyUrl
+     * @param  string   $path
+     * @param  string   $proxyUrl
+     * @return ProxyUrl
      */
     public function create($path, $proxyUrl)
     {

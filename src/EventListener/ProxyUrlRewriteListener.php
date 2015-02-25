@@ -22,17 +22,17 @@ use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\UrlMatcher;
 class ProxyUrlRewriteListener
 {
     /**
-     * @var \PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection
+     * @var ProxyUrlCollection
      */
     private $proxyUrlCollection;
 
     /**
-     * @var \Symfony\Component\Routing\RouterInterface
+     * @var RouterInterface
      */
     private $router;
 
     /**
-     * @param \PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection $proxyUrlCollection
+     * @param ProxyUrlCollection $proxyUrlCollection
      */
     public function setProxyUrlCollection(ProxyUrlCollection $proxyUrlCollection)
     {
@@ -40,7 +40,7 @@ class ProxyUrlRewriteListener
     }
 
     /**
-     * @param \Symfony\Component\Routing\RouterInterface $router
+     * @param RouterInterface $router
      */
     public function setRouter(RouterInterface $router)
     {
@@ -48,7 +48,7 @@ class ProxyUrlRewriteListener
     }
 
     /**
-     * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+     * @param GetResponseEvent $event
      */
     public function onKernelRequest(GetResponseEvent $event)
     {
