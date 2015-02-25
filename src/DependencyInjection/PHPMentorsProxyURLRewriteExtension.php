@@ -29,7 +29,7 @@ class PHPMentorsProxyURLRewriteExtension extends Extension
     {
         $config = $this->processConfiguration(new Configuration(), $configs);
 
-        $loader = new XmlFileLoader($container, new FileLocator(dirname(__DIR__) . '/Resources/config'));
+        $loader = new XmlFileLoader($container, new FileLocator(dirname(__DIR__).'/Resources/config'));
         $loader->load('services.xml');
 
         $this->transformConfigToContainerParameters($config, $container);
@@ -60,7 +60,7 @@ class PHPMentorsProxyURLRewriteExtension extends Extension
                 $definition->setAbstract(false);
                 $definition->setArguments(array($path, $proxyUrl));
 
-                $serviceId = 'phpmentors_proxy_url_rewrite.proxy_url' . $index;
+                $serviceId = 'phpmentors_proxy_url_rewrite.proxy_url'.$index;
                 $container->setDefinition($serviceId, $definition);
                 $container->getDefinition('phpmentors_proxy_url_rewrite.proxy_url_collection')->addMethodCall('add', array($serviceId, new Reference($serviceId)));
                 ++$index;

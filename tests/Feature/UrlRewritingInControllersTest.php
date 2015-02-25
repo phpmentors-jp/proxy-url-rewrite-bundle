@@ -27,7 +27,7 @@ class UrlRewritingInControllersTest extends WebTestCase
     {
         parent::setUp();
 
-        $_SERVER['KERNEL_DIR'] = __DIR__ . '/app';
+        $_SERVER['KERNEL_DIR'] = __DIR__.'/app';
         $_SERVER['SYMFONY__SECRET'] = hash('sha1', uniqid(mt_rand()));
 
         $this->removeCacheDir();
@@ -59,7 +59,7 @@ class UrlRewritingInControllersTest extends WebTestCase
     protected function removeCacheDir()
     {
         $fileSystem = new Filesystem();
-        $fileSystem->remove($_SERVER['KERNEL_DIR'] . '/cache/test');
+        $fileSystem->remove($_SERVER['KERNEL_DIR'].'/cache/test');
     }
 
     public function rewriteUrlInGenerateUrlData()

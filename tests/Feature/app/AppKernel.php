@@ -43,7 +43,7 @@ class AppKernel extends Kernel
      */
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load(__DIR__ . '/config/config.yml');
+        $loader->load(__DIR__.'/config/config.yml');
 
         if ($this->config instanceof \Closure) {
             $loader->load($this->config);
@@ -63,7 +63,7 @@ class AppKernel extends Kernel
      */
     protected function getContainerClass()
     {
-        return parent::getContainerClass() . static::$numberOfInitializations;
+        return parent::getContainerClass().static::$numberOfInitializations;
     }
 
     /**

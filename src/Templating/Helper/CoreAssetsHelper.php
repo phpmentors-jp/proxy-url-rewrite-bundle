@@ -62,7 +62,7 @@ class CoreAssetsHelper extends \Symfony\Component\Templating\Helper\CoreAssetsHe
 
             $urlGenerator = new UrlGenerator($routeCollection, $requestContext);
 
-            return $urlGenerator->generate($matchedProxyUrl->getRouteName(), array(), UrlGeneratorInterface::ABSOLUTE_PATH) . ltrim($url, '/');
+            return $urlGenerator->generate($matchedProxyUrl->getRouteName(), array(), UrlGeneratorInterface::ABSOLUTE_PATH).ltrim($url, '/');
         } else {
             return $url;
         }

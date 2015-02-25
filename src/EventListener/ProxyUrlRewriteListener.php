@@ -56,7 +56,7 @@ class ProxyUrlRewriteListener
             $urlMatcher = new UrlMatcher($this->proxyUrlCollection);
             $matchedProxyUrl = $urlMatcher->match($this->router->getContext()->getPathInfo());
             if ($matchedProxyUrl !== null) {
-                $this->router->getContext()->setBaseUrl($matchedProxyUrl->getPath() . $this->router->getContext()->getBaseUrl());
+                $this->router->getContext()->setBaseUrl($matchedProxyUrl->getPath().$this->router->getContext()->getBaseUrl());
 
                 if ($matchedProxyUrl->getScheme() !== null) {
                     $this->router->getContext()->setScheme($matchedProxyUrl->getScheme());
