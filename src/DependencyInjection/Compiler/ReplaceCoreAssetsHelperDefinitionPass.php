@@ -14,7 +14,6 @@ namespace PHPMentors\ProxyURLRewriteBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Definition;
 
 class ReplaceCoreAssetsHelperDefinitionPass implements CompilerPassInterface
 {
