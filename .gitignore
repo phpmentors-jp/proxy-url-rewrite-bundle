@@ -1,4 +1,6 @@
+/.composer/
 /composer.lock
+/composer.phar
 /vendor/
 /tests/Feature/app/cache/*
 /tests/Feature/app/logs/*
