@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2014 KUBO Atsuhiro <kubo@iteman.jp>,
+ * Copyright (c) 2014-2015 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
  * This file is part of PHPMentorsProxyURLRewriteBundle.
@@ -12,5 +12,4 @@
 
 error_reporting(E_ALL);
 
-$loader = require dirname(__DIR__).'/vendor/autoload.php'; /* @var $loader \Composer\Autoload\ClassLoader */
-$loader->addPsr4('PHPMentors\ProxyURLRewriteBundle\\', __DIR__);
+require dirname(__DIR__).'/vendor/autoload.php';
