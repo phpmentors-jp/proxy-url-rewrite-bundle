@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2014 KUBO Atsuhiro <kubo@iteman.jp>,
+ * Copyright (c) 2014-2015 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
  * This file is part of PHPMentorsProxyURLRewriteBundle.
@@ -12,6 +12,7 @@
 
 namespace PHPMentors\ProxyURLRewriteBundle;
 
+use PHPMentors\ProxyURLRewriteBundle\DependencyInjection\Compiler\ReplaceAssetExtensionAndPakcagesDefinitionPass;
 use PHPMentors\ProxyURLRewriteBundle\DependencyInjection\Compiler\ReplaceCoreAssetsHelperDefinitionPass;
 use PHPMentors\ProxyURLRewriteBundle\DependencyInjection\PHPMentorsProxyURLRewriteExtension;
 use Symfony\Bundle\FrameworkBundle\DependencyInjection\Compiler\TemplatingPass;
@@ -25,6 +26,8 @@ class PHPMentorsProxyURLRewriteBundle extends Bundle
      */
     public function build(ContainerBuilder $container)
     {
+        $container->addCompilerPass(new ReplaceAssetExtensionAndPakcagesDefinitionPass());
+
         $beforeOptimizationPasses = $container->getCompilerPassConfig()->getBeforeOptimizationPasses();
         for ($i = 0; $i < count($beforeOptimizationPasses); ++$i) {
             if ($beforeOptimizationPasses[$i] instanceof TemplatingPass) {

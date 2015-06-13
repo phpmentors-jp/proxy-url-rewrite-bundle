@@ -24,6 +24,7 @@
         "symfony/browser-kit": "~2.3",
         "symfony/filesystem": "~2.3",
         "symfony/http-foundation": "~2.3",
+        "symfony/twig-bridge": "~2.7",
         "symfony/twig-bundle": "~2.3"
     },
     "autoload": {
@@ -35,6 +36,10 @@
         "psr-4": {
             "PHPMentors\\ProxyURLRewriteBundle\\": "tests/"
         }
+    },
+    "suggest": {
+        "symfony/twig-bridge": ">=2.7.0 provides transparent URL rewriting with the `asset()` function in Twig templates",
+        "symfony/twig-bundle": ">=2.7.0 provides transparent URL rewriting with the `asset()` function in Twig templates"
     },
     "extra": {
         "branch-alias": {
