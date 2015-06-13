@@ -13,9 +13,7 @@
 namespace PHPMentors\ProxyURLRewriteBundle;
 
 use PHPMentors\ProxyURLRewriteBundle\DependencyInjection\Compiler\ReplaceAssetExtensionAndPakcagesDefinitionPass;
-use PHPMentors\ProxyURLRewriteBundle\DependencyInjection\Compiler\ReplaceCoreAssetsHelperDefinitionPass;
 use PHPMentors\ProxyURLRewriteBundle\DependencyInjection\PHPMentorsProxyURLRewriteExtension;
-use Symfony\Bundle\FrameworkBundle\DependencyInjection\Compiler\TemplatingPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -27,17 +25,6 @@ class PHPMentorsProxyURLRewriteBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         $container->addCompilerPass(new ReplaceAssetExtensionAndPakcagesDefinitionPass());
-
-        $beforeOptimizationPasses = $container->getCompilerPassConfig()->getBeforeOptimizationPasses();
-        for ($i = 0; $i < count($beforeOptimizationPasses); ++$i) {
-            if ($beforeOptimizationPasses[$i] instanceof TemplatingPass) {
-                $templatingPassIndex = $i;
-                break;
-            }
-        }
-
-        array_splice($beforeOptimizationPasses, $templatingPassIndex, 0, array(new ReplaceCoreAssetsHelperDefinitionPass()));
-        $container->getCompilerPassConfig()->setBeforeOptimizationPasses($beforeOptimizationPasses);
     }
 
     /**
