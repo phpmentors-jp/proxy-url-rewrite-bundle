@@ -12,14 +12,13 @@
 
 namespace PHPMentors\ProxyURLRewriteBundle\Templating\Helper;
 
+use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection;
+use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\UrlMatcher;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
-
-use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection;
-use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\UrlMatcher;
 
 class CoreAssetsHelper extends \Symfony\Component\Templating\Helper\CoreAssetsHelper
 {

@@ -12,10 +12,9 @@
 
 namespace PHPMentors\ProxyURLRewriteBundle\DependencyInjection;
 
+use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlFactory;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-
-use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlFactory;
 
 class Configuration implements ConfigurationInterface
 {

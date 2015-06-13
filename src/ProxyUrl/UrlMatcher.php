@@ -28,7 +28,8 @@ class UrlMatcher
     }
 
     /**
-     * @param  string               $pathinfo
+     * @param string $pathinfo
+     *
      * @return MatchedProxyUrl|null
      */
     public function match($pathinfo)

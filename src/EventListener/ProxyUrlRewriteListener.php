@@ -12,12 +12,11 @@
 
 namespace PHPMentors\ProxyURLRewriteBundle\EventListener;
 
+use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection;
+use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\UrlMatcher;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\Routing\RouterInterface;
-
-use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection;
-use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\UrlMatcher;
 
 class ProxyUrlRewriteListener
 {

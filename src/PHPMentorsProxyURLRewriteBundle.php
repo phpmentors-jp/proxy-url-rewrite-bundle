@@ -12,12 +12,11 @@
 
 namespace PHPMentors\ProxyURLRewriteBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Bundle\FrameworkBundle\DependencyInjection\Compiler\TemplatingPass;
-
 use PHPMentors\ProxyURLRewriteBundle\DependencyInjection\Compiler\ReplaceCoreAssetsHelperDefinitionPass;
 use PHPMentors\ProxyURLRewriteBundle\DependencyInjection\PHPMentorsProxyURLRewriteExtension;
+use Symfony\Bundle\FrameworkBundle\DependencyInjection\Compiler\TemplatingPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class PHPMentorsProxyURLRewriteBundle extends Bundle
 {

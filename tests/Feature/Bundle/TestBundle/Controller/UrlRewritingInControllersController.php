@@ -19,7 +19,8 @@ use Symfony\Component\HttpFoundation\Response;
 class UrlRewritingInControllersController extends Controller
 {
     /**
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function indexAction(Request $request)

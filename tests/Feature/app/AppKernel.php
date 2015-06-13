@@ -21,7 +21,7 @@ class AppKernel extends Kernel
     private $config;
 
     /**
-     * @var integer
+     * @var int
      */
     private static $numberOfInitializations = 0;
 

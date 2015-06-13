@@ -15,8 +15,9 @@ namespace PHPMentors\ProxyURLRewriteBundle\ProxyUrl;
 class ProxyUrlFactory
 {
     /**
-     * @param  string   $path
-     * @param  string   $proxyUrl
+     * @param string $path
+     * @param string $proxyUrl
+     *
      * @return ProxyUrl
      */
     public function create($path, $proxyUrl)
@@ -27,9 +28,12 @@ class ProxyUrlFactory
     }
 
     /**
-     * @param  string                    $url
+     * @param string $url
+     *
      * @return array
+     *
      * @throws \UnexpectedValueException
+     *
      * @link http://php.net/manual/en/function.parse-url.php
      */
     public static function parseUrl($url)
