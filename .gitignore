@@ -1,6 +1,7 @@
 /.composer/
 /composer.lock
 /composer.phar
+/php-cs-fixer.phar
 /vendor/
 /tests/Feature/app/cache/*
 /tests/Feature/app/logs/*
