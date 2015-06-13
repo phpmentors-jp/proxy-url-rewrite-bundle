@@ -18,6 +18,7 @@ use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\DefinitionDecorator;
 
 class PHPMentorsProxyURLRewriteExtension extends Extension
 {
@@ -51,12 +52,7 @@ class PHPMentorsProxyURLRewriteExtension extends Extension
         if ($config['enabled']) {
             $index = 0;
             foreach ($config['proxy_urls'] as $path => $proxyUrl) {
-                $abstractDefinition = $container->getDefinition('phpmentors_proxy_url_rewrite.proxy_url');
-                $definition = new Definition();
-                $definition->setClass($abstractDefinition->getClass());
-                $definition->setFactoryService($abstractDefinition->getFactoryService());
-                $definition->setFactoryMethod($abstractDefinition->getFactoryMethod());
-                $definition->setAbstract(false);
+                $definition = new DefinitionDecorator('phpmentors_proxy_url_rewrite.proxy_url');
                 $definition->setArguments(array($path, $proxyUrl));
 
                 $serviceId = 'phpmentors_proxy_url_rewrite.proxy_url'.$index;

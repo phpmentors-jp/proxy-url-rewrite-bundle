@@ -21,7 +21,9 @@
       </call>
     </service>
     <service id="phpmentors_proxy_url_rewrite.proxy_asset_extension" class="%phpmentors_proxy_url_rewrite.proxy_asset_extension.class%" public="false"/>
-    <service id="phpmentors_proxy_url_rewrite.proxy_url" class="%phpmentors_proxy_url_rewrite.proxy_url.class%" factory-service="phpmentors_proxy_url_rewrite.proxy_url_factory" factory-method="create" abstract="true"/>
+    <service id="phpmentors_proxy_url_rewrite.proxy_url" class="%phpmentors_proxy_url_rewrite.proxy_url.class%" abstract="true">
+      <factory service="phpmentors_proxy_url_rewrite.proxy_url_factory" method="create"/>
+    </service>
     <service id="phpmentors_proxy_url_rewrite.proxy_url_collection" class="%phpmentors_proxy_url_rewrite.proxy_url_collection.class%"/>
     <service id="phpmentors_proxy_url_rewrite.proxy_url_factory" class="%phpmentors_proxy_url_rewrite.proxy_url_factory.class%"/>
     <service id="phpmentors_proxy_url_rewrite.proxy_url_rewrite_listener" class="%phpmentors_proxy_url_rewrite.proxy_url_rewrite_listener.class%">
