@@ -10,7 +10,7 @@
  * distribution, and is available at http://opensource.org/licenses/BSD-2-Clause
  */
 
-namespace PHPMentors\ProxyURLRewriteBundle\Feature\Bundle\TestBundle;
+namespace PHPMentors\ProxyURLRewriteBundle\Functional\Bundle\TestBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

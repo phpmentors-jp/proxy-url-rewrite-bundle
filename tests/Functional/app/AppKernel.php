@@ -34,7 +34,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new PHPMentors\ProxyURLRewriteBundle\PHPMentorsProxyURLRewriteBundle(),
-            new PHPMentors\ProxyURLRewriteBundle\Feature\Bundle\TestBundle\TestBundle(),
+            new PHPMentors\ProxyURLRewriteBundle\Functional\Bundle\TestBundle\TestBundle(),
         );
     }
 
