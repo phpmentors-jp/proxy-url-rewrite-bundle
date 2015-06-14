@@ -10,13 +10,21 @@ A Symfony bundle to rewrite URLs for applications behind reverse proxies
 ## Features
 
 * URL rewriting for [Controller::generateUrl()](http://symfony.com/doc/current/quick_tour/the_controller.html#redirecting-and-forwarding) in controllers
-* URL rewriting for [{{ asset('...') }}](http://symfony.com/doc/current/book/templating.html#linking-to-assets) in templates
+* URL rewriting for [{{ asset('...') }}](http://symfony.com/doc/current/book/templating.html#linking-to-assets) in Twig templates
 
 ## Installation
 
 `PHPMentorsProxyURLRewriteBundle` can be installed using [Composer](http://getcomposer.org/).
 
 First, add the dependency to `phpmentors/proxy-url-rewrite-bundle` into your `composer.json` file as the following:
+
+Stable version:
+
+```
+composer require phpmentors/proxy-url-rewrite-bundle "1.0.*"
+```
+
+Development version:
 
 ```
 composer require phpmentors/proxy-url-rewrite-bundle "~1.1@dev"
@@ -40,13 +48,15 @@ class AppKernel extends Kernel
 
 ## Configuration
 
-`app/config/config_prod.yml`:
+`app/config/config.yml`:
 
 ```yaml
 ...
 phpmentors_proxy_url_rewrite:
     proxy_urls:
-        "!^.*!": "/foo/bar"
+        foo_bar:
+            path: "!^.*!"
+            proxy_url: "/foo/bar"
 ```
 
 `app/config/config_dev.yml`:
