@@ -13,7 +13,7 @@
 namespace PHPMentors\ProxyURLRewriteBundle\EventListener;
 
 use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection;
-use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\UrlMatcher;
+use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlMatcher;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\Routing\RouterInterface;
@@ -52,7 +52,7 @@ class ProxyUrlRewriteListener
     public function onKernelRequest(GetResponseEvent $event)
     {
         if ($event->getRequestType() == HttpKernelInterface::MASTER_REQUEST) {
-            $urlMatcher = new UrlMatcher($this->proxyUrlCollection);
+            $urlMatcher = new ProxyUrlMatcher($this->proxyUrlCollection);
             $matchedProxyUrl = $urlMatcher->match($this->router->getContext()->getPathInfo());
             if ($matchedProxyUrl !== null) {
                 $this->router->getContext()->setBaseUrl($matchedProxyUrl->getPath().$this->router->getContext()->getBaseUrl());

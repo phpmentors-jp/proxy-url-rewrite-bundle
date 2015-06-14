@@ -13,7 +13,7 @@
 namespace PHPMentors\ProxyURLRewriteBundle\Asset;
 
 use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection;
-use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\UrlMatcher;
+use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlMatcher;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -56,7 +56,7 @@ class ProxyPackages extends Packages
             return $url;
         }
 
-        $urlMatcher = new UrlMatcher($this->proxyUrlCollection);
+        $urlMatcher = new ProxyUrlMatcher($this->proxyUrlCollection);
         $matchedProxyUrl = $urlMatcher->match($url);
         if ($matchedProxyUrl === null) {
             return $url;

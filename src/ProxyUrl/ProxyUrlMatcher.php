@@ -14,7 +14,7 @@ namespace PHPMentors\ProxyURLRewriteBundle\ProxyUrl;
 
 use PHPMentors\DomainKata\Service\ServiceInterface;
 
-class UrlMatcher implements ServiceInterface
+class ProxyUrlMatcher implements ServiceInterface
 {
     /**
      * @var ProxyUrlCollection
