@@ -12,6 +12,7 @@
     ],
     "require": {
         "php": ">=5.3.9",
+        "phpmentors/domain-kata": "~1.4",
         "symfony/config": "~2.7",
         "symfony/dependency-injection": "~2.7",
         "symfony/framework-bundle": "~2.7",
