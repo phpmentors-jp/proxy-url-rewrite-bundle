@@ -12,7 +12,6 @@
 
 namespace PHPMentors\ProxyURLRewriteBundle\Asset;
 
-use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection;
 use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlMatcher;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\Routing\Generator\UrlGenerator;
@@ -27,16 +26,20 @@ use Symfony\Component\Routing\RouteCollection;
 class ProxyPackages extends Packages
 {
     /**
-     * @var ProxyUrlCollection
+     * @var ProxyUrlMatcher
+     *
+     * @since Property available since Release 1.1.0
      */
-    private $proxyUrlCollection;
+    private $proxyUrlMatcher;
 
     /**
-     * @param ProxyUrlCollection $proxyUrlCollection
+     * @param ProxyUrlMatcher $proxyUrlMatcher
+     *
+     * @since Method available since Release 1.1.0
      */
-    public function setProxyUrlCollection(ProxyUrlCollection $proxyUrlCollection)
+    public function setProxyUrlMatcher(ProxyUrlMatcher $proxyUrlMatcher)
     {
-        $this->proxyUrlCollection = $proxyUrlCollection;
+        $this->proxyUrlMatcher = $proxyUrlMatcher;
     }
 
     /**
@@ -56,8 +59,7 @@ class ProxyPackages extends Packages
             return $url;
         }
 
-        $urlMatcher = new ProxyUrlMatcher($this->proxyUrlCollection);
-        $matchedProxyUrl = $urlMatcher->match($url);
+        $matchedProxyUrl = $this->proxyUrlMatcher->match($url);
         if ($matchedProxyUrl === null) {
             return $url;
         }

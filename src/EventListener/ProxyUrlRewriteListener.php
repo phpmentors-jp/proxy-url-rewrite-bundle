@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2014 KUBO Atsuhiro <kubo@iteman.jp>,
+ * Copyright (c) 2014-2015 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
  * This file is part of PHPMentorsProxyURLRewriteBundle.
@@ -12,7 +12,6 @@
 
 namespace PHPMentors\ProxyURLRewriteBundle\EventListener;
 
-use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection;
 use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlMatcher;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
@@ -21,9 +20,11 @@ use Symfony\Component\Routing\RouterInterface;
 class ProxyUrlRewriteListener
 {
     /**
-     * @var ProxyUrlCollection
+     * @var ProxyUrlMatcher
+     *
+     * @since Property available since Release 1.1.0
      */
-    private $proxyUrlCollection;
+    private $proxyUrlMatcher;
 
     /**
      * @var RouterInterface
@@ -31,11 +32,13 @@ class ProxyUrlRewriteListener
     private $router;
 
     /**
-     * @param ProxyUrlCollection $proxyUrlCollection
+     * @param ProxyUrlMatcher $proxyUrlMatcher
+     *
+     * @since Method available since Release 1.1.0
      */
-    public function setProxyUrlCollection(ProxyUrlCollection $proxyUrlCollection)
+    public function setProxyUrlMatcher(ProxyUrlMatcher $proxyUrlMatcher)
     {
-        $this->proxyUrlCollection = $proxyUrlCollection;
+        $this->proxyUrlMatcher = $proxyUrlMatcher;
     }
 
     /**
@@ -52,8 +55,7 @@ class ProxyUrlRewriteListener
     public function onKernelRequest(GetResponseEvent $event)
     {
         if ($event->getRequestType() == HttpKernelInterface::MASTER_REQUEST) {
-            $urlMatcher = new ProxyUrlMatcher($this->proxyUrlCollection);
-            $matchedProxyUrl = $urlMatcher->match($this->router->getContext()->getPathInfo());
+            $matchedProxyUrl = $this->proxyUrlMatcher->match($this->router->getContext()->getPathInfo());
             if ($matchedProxyUrl !== null) {
                 $this->router->getContext()->setBaseUrl($matchedProxyUrl->getPath().$this->router->getContext()->getBaseUrl());
 

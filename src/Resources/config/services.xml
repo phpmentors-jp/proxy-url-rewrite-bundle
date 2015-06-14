@@ -6,12 +6,13 @@
     <parameter key="phpmentors_proxy_url_rewrite.proxy_url.class">PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrl</parameter>
     <parameter key="phpmentors_proxy_url_rewrite.proxy_url_collection.class">PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlCollection</parameter>
     <parameter key="phpmentors_proxy_url_rewrite.proxy_url_factory.class">PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlFactory</parameter>
+    <parameter key="phpmentors_proxy_url_rewrite.proxy_url_matcher.class">PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlMatcher</parameter>
     <parameter key="phpmentors_proxy_url_rewrite.proxy_url_rewrite_listener.class">PHPMentors\ProxyURLRewriteBundle\EventListener\ProxyUrlRewriteListener</parameter>
   </parameters>
   <services>
     <service id="phpmentors_proxy_url_rewrite.proxy_packages" class="%phpmentors_proxy_url_rewrite.proxy_packages.class%" public="false">
-      <call method="setProxyUrlCollection">
-        <argument type="service" id="phpmentors_proxy_url_rewrite.proxy_url_collection"/>
+      <call method="setProxyUrlMatcher">
+        <argument type="service" id="phpmentors_proxy_url_rewrite.proxy_url_matcher"/>
       </call>
     </service>
     <service id="phpmentors_proxy_url_rewrite.proxy_asset_extension" class="%phpmentors_proxy_url_rewrite.proxy_asset_extension.class%" public="false"/>
@@ -20,9 +21,12 @@
     </service>
     <service id="phpmentors_proxy_url_rewrite.proxy_url_collection" class="%phpmentors_proxy_url_rewrite.proxy_url_collection.class%" public="false"/>
     <service id="phpmentors_proxy_url_rewrite.proxy_url_factory" class="%phpmentors_proxy_url_rewrite.proxy_url_factory.class%" public="false"/>
+    <service id="phpmentors_proxy_url_rewrite.proxy_url_matcher" class="%phpmentors_proxy_url_rewrite.proxy_url_matcher.class%" public="false">
+      <argument type="service" id="phpmentors_proxy_url_rewrite.proxy_url_collection"/>
+    </service>
     <service id="phpmentors_proxy_url_rewrite.proxy_url_rewrite_listener" class="%phpmentors_proxy_url_rewrite.proxy_url_rewrite_listener.class%">
-      <call method="setProxyUrlCollection">
-        <argument type="service" id="phpmentors_proxy_url_rewrite.proxy_url_collection"/>
+      <call method="setProxyUrlMatcher">
+        <argument type="service" id="phpmentors_proxy_url_rewrite.proxy_url_matcher"/>
       </call>
       <call method="setRouter">
         <argument type="service" id="router"/>
