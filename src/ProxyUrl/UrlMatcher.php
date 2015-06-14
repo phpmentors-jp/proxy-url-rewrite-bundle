@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2014 KUBO Atsuhiro <kubo@iteman.jp>,
+ * Copyright (c) 2014-2015 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
  * This file is part of PHPMentorsProxyURLRewriteBundle.
@@ -30,14 +30,14 @@ class UrlMatcher
     /**
      * @param string $pathinfo
      *
-     * @return MatchedProxyUrl|null
+     * @return ProxyUrl|null
      */
     public function match($pathinfo)
     {
         $pathinfo = rawurldecode($pathinfo);
-        foreach ($this->proxyUrlCollection as $routeName => $proxyUrl) { /* @var $proxyUrl \PHPMentors\ProxyURLRewriteBundle\Routing\ProxyUrl */
+        foreach ($this->proxyUrlCollection as $proxyUrl) { /* @var $proxyUrl ProxyUrl */
             if (preg_match($proxyUrl->getTarget(), $pathinfo)) {
-                return new MatchedProxyUrl($proxyUrl->getTarget(), $proxyUrl->getPath(), $proxyUrl->getHost(), $proxyUrl->getScheme(), $routeName);
+                return $proxyUrl;
             }
         }
 
