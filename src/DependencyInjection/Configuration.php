@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2014 KUBO Atsuhiro <kubo@iteman.jp>,
+ * Copyright (c) 2014-2015 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
  * This file is part of PHPMentorsProxyURLRewriteBundle.
@@ -25,28 +25,36 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $treeBuilder->root('phpmentors_proxy_url_rewrite')
-            ->fixXmlConfig('proxy_url')
             ->canBeEnabled()
+            ->fixXmlConfig('proxy_url')
             ->children()
                 ->arrayNode('proxy_urls')
-                    ->useAttributeAsKey('path')
-                    ->prototype('scalar')
-                        ->defaultNull()
-                        ->cannotBeEmpty()
-                        ->validate()
-                            ->always(function ($v) {
-                                try {
-                                    ProxyUrlFactory::parseUrl($v);
-                                } catch (\UnexpectedValueException $e) {
-                                    throw new \InvalidArgumentException($e->getMessage());
-                                }
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('path')
+                                ->isRequired()
+                                ->cannotBeEmpty()
+                            ->end()
+                            ->scalarNode('proxy_url')
+                                ->isRequired()
+                                ->cannotBeEmpty()
+                                ->validate()
+                                    ->always(function ($v) {
+                                        try {
+                                            ProxyUrlFactory::parseUrl($v);
+                                        } catch (\UnexpectedValueException $e) {
+                                            throw new \InvalidArgumentException($e->getMessage());
+                                        }
 
-                                return $v;
-                            })
+                                        return $v;
+                                    })
+                                ->end()
+                            ->end()
                         ->end()
                     ->end()
                 ->end()
-            ->end();
+            ->end()
+            ;
 
         return $treeBuilder;
     }

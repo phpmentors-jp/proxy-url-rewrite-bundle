@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2014 KUBO Atsuhiro <kubo@iteman.jp>,
+ * Copyright (c) 2014-2015 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
  * This file is part of PHPMentorsProxyURLRewriteBundle.
@@ -49,15 +49,13 @@ class PHPMentorsProxyURLRewriteExtension extends Extension
     private function transformConfigToContainerParameters(array $config, ContainerBuilder $container)
     {
         if ($config['enabled']) {
-            $index = 0;
-            foreach ($config['proxy_urls'] as $path => $proxyUrl) {
+            foreach ($config['proxy_urls'] as $id => $proxyUrl) {
                 $definition = new DefinitionDecorator('phpmentors_proxy_url_rewrite.proxy_url');
-                $definition->setArguments(array($path, $proxyUrl));
+                $definition->setArguments(array($id, $proxyUrl['path'], $proxyUrl['proxy_url']));
 
-                $serviceId = 'phpmentors_proxy_url_rewrite.proxy_url'.$index;
+                $serviceId = 'phpmentors_proxy_url_rewrite.proxy_url.'.sha1($id);
                 $container->setDefinition($serviceId, $definition);
-                $container->getDefinition('phpmentors_proxy_url_rewrite.proxy_url_collection')->addMethodCall('add', array($serviceId, new Reference($serviceId)));
-                ++$index;
+                $container->getDefinition('phpmentors_proxy_url_rewrite.proxy_url_collection')->addMethodCall('add', array(new Reference($serviceId)));
             }
         } else {
             $container->removeDefinition('phpmentors_proxy_url_rewrite.proxy_url_rewrite_listener');

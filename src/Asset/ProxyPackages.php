@@ -63,7 +63,7 @@ class ProxyPackages extends Packages
         }
 
         $routeCollection = new RouteCollection();
-        $routeCollection->add($matchedProxyUrl->getRouteName(), new Route('/'));
+        $routeCollection->add($matchedProxyUrl->getId(), new Route('/'));
 
         $requestContext = new RequestContext($matchedProxyUrl->getPath());
         if ($matchedProxyUrl->getHost() !== null) {
@@ -75,6 +75,6 @@ class ProxyPackages extends Packages
 
         $urlGenerator = new UrlGenerator($routeCollection, $requestContext);
 
-        return $urlGenerator->generate($matchedProxyUrl->getRouteName(), array(), $absolute).ltrim($url, '/');
+        return $urlGenerator->generate($matchedProxyUrl->getId(), array(), $absolute).ltrim($url, '/');
     }
 }

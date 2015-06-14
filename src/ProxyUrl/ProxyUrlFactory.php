@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2014 KUBO Atsuhiro <kubo@iteman.jp>,
+ * Copyright (c) 2014-2015 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
  * This file is part of PHPMentorsProxyURLRewriteBundle.
@@ -15,16 +15,17 @@ namespace PHPMentors\ProxyURLRewriteBundle\ProxyUrl;
 class ProxyUrlFactory
 {
     /**
-     * @param string $path
-     * @param string $proxyUrl
+     * @param int|string $proxyUrlId
+     * @param string     $path
+     * @param string     $proxyUrl
      *
      * @return ProxyUrl
      */
-    public function create($path, $proxyUrl)
+    public function create($proxyUrlId, $path, $proxyUrl)
     {
         list($proxyUrlPath, $proxyUrlHost, $proxyUrlScheme) = static::parseUrl($proxyUrl);
 
-        return new ProxyUrl($path, $proxyUrlPath, $proxyUrlHost, $proxyUrlScheme);
+        return new ProxyUrl($proxyUrlId, $path, $proxyUrlPath, $proxyUrlHost, $proxyUrlScheme);
     }
 
     /**

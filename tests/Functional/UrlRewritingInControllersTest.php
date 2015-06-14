@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2014 KUBO Atsuhiro <kubo@iteman.jp>,
+ * Copyright (c) 2014-2015 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
  * This file is part of PHPMentorsProxyURLRewriteBundle.
@@ -87,7 +87,14 @@ class UrlRewritingInControllersTest extends WebTestCase
     public function rewriteUrlInGenerateUrl($proxyUrl, $referenceType, $rewroteUrl)
     {
         $client = $this->createClient(array('config' => function (ContainerBuilder $container) use ($proxyUrl) {
-            $container->loadFromExtension('phpmentors_proxy_url_rewrite', array('proxy_urls' => array('!^.*!' => $proxyUrl)));
+            $container->loadFromExtension('phpmentors_proxy_url_rewrite', array(
+                'proxy_urls' => array(
+                    'foo' => array(
+                        'path' => '!^.*!',
+                        'proxy_url' => $proxyUrl,
+                    ),
+                ),
+            ));
         }));
 
         $client->request('GET', sprintf('http://backend1.example.com:8080/url-rewriting-in-controllers/?referenceType=%s', $referenceType));
