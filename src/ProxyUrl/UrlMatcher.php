@@ -12,7 +12,9 @@
 
 namespace PHPMentors\ProxyURLRewriteBundle\ProxyUrl;
 
-class UrlMatcher
+use PHPMentors\DomainKata\Service\ServiceInterface;
+
+class UrlMatcher implements ServiceInterface
 {
     /**
      * @var ProxyUrlCollection

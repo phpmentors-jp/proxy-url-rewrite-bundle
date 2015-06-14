@@ -12,7 +12,10 @@
 
 namespace PHPMentors\ProxyURLRewriteBundle\ProxyUrl;
 
-class ProxyUrl
+use PHPMentors\DomainKata\Entity\EntityInterface;
+use PHPMentors\DomainKata\Entity\Operation\IdentifiableInterface;
+
+class ProxyUrl implements EntityInterface, IdentifiableInterface
 {
     /**
      * @var string
@@ -66,6 +69,8 @@ class ProxyUrl
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @return int|string
      *
      * @since Method available since Release 1.1.0

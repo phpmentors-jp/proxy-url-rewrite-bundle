@@ -12,7 +12,10 @@
 
 namespace PHPMentors\ProxyURLRewriteBundle\ProxyUrl;
 
-class ProxyUrlCollection implements \IteratorAggregate, \Countable
+use PHPMentors\DomainKata\Entity\EntityCollectionInterface;
+use PHPMentors\DomainKata\Entity\EntityInterface;
+
+class ProxyUrlCollection implements EntityCollectionInterface
 {
     /**
      * @var array
@@ -20,12 +23,13 @@ class ProxyUrlCollection implements \IteratorAggregate, \Countable
     private $proxyUrls = array();
 
     /**
-     * @param string   $routeName
-     * @param ProxyUrl $proxyUrl
+     * {@inheritDoc}
      */
-    public function add(ProxyUrl $proxyUrl)
+    public function add(EntityInterface $entity)
     {
-        $this->proxyUrls[$proxyUrl->getId()] = $proxyUrl;
+        assert($entity instanceof ProxyUrl);
+
+        $this->proxyUrls[$entity->getId()] = $entity;
     }
 
     /**
@@ -42,5 +46,33 @@ class ProxyUrlCollection implements \IteratorAggregate, \Countable
     public function getIterator()
     {
         return new \ArrayIterator($this->proxyUrls);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function get($key)
+    {
+        if (!array_key_exists($key, $this->proxyUrls)) {
+            return null;
+        }
+
+        return $this->proxyUrls[$key];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function remove(EntityInterface $entity)
+    {
+        assert($entity instanceof ProxyUrl);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toArray()
+    {
+        return $this->proxyUrls;
     }
 }

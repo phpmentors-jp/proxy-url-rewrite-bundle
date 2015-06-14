@@ -12,7 +12,9 @@
 
 namespace PHPMentors\ProxyURLRewriteBundle\ProxyUrl;
 
-class ProxyUrlFactory
+use PHPMentors\DomainKata\Service\ServiceInterface;
+
+class ProxyUrlFactory implements ServiceInterface
 {
     /**
      * @param int|string $proxyUrlId
