@@ -43,8 +43,8 @@ class PHPMentorsProxyURLRewriteExtension extends Extension
     }
 
     /**
-     * @param array                                                   $config
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     * @param array            $config
+     * @param ContainerBuilder $container
      */
     private function transformConfigToContainer(array $config, ContainerBuilder $container)
     {
