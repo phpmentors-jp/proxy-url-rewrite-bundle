@@ -31,7 +31,7 @@ class PHPMentorsProxyURLRewriteExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(dirname(__DIR__).'/Resources/config'));
         $loader->load('services.xml');
 
-        $this->transformConfigToContainerParameters($config, $container);
+        $this->transformConfigToContainer($config, $container);
     }
 
     /**
@@ -46,7 +46,7 @@ class PHPMentorsProxyURLRewriteExtension extends Extension
      * @param array                                                   $config
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    private function transformConfigToContainerParameters(array $config, ContainerBuilder $container)
+    private function transformConfigToContainer(array $config, ContainerBuilder $container)
     {
         if ($config['enabled']) {
             foreach ($config['proxy_urls'] as $id => $proxyUrl) {
