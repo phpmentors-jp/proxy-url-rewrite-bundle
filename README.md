@@ -56,7 +56,7 @@ phpmentors_proxy_url_rewrite:
     proxy_urls:
         foo_bar:
             path: "!^.*!"
-            proxy_url: "/foo/bar"
+            proxy_url: "http://www.example.com/foo/bar"
 ```
 
 `app/config/config_dev.yml`:
