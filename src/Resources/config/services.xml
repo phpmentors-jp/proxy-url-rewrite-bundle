@@ -31,7 +31,7 @@
       <call method="setRouter">
         <argument type="service" id="router"/>
       </call>
-      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="16"/>
     </service>
   </services>
 </container>
