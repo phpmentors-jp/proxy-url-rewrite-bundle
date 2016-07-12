@@ -26,7 +26,7 @@ class UrlRewritingInTemplatesController extends Controller
     public function indexAction(Request $request)
     {
         return $this->render('TestBundle:UrlRewritingInTemplates:index.html.twig', array(
-            'referenceType' => $request->query->get('referenceType'),
+            'referenceType' => (bool) $request->query->get('referenceType'),
         ));
     }
 }

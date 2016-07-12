@@ -68,13 +68,13 @@ class UrlRewritingInTemplatesTest extends WebTestCase
     public function rewriteUrlInAssetData()
     {
         return array(
-            array('/foo/bar/', UrlGeneratorInterface::ABSOLUTE_PATH, '/foo/bar/bundles/test/foo.png'),
-            array('//example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_PATH, '/foo/bar/bundles/test/foo.png'),
-            array('//example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_URL, 'http://example.com/foo/bar/bundles/test/foo.png'),
-            array('http://example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_PATH, '/foo/bar/bundles/test/foo.png'),
-            array('http://example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_URL, 'http://example.com/foo/bar/bundles/test/foo.png'),
-            array('https://example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_PATH, '/foo/bar/bundles/test/foo.png'),
-            array('https://example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_URL, 'https://example.com/foo/bar/bundles/test/foo.png'),
+            array('/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
+            array('//example.com/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
+            array('//example.com/foo/bar/', true, 'http://example.com/foo/bar/bundles/test/foo.png'),
+            array('http://example.com/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
+            array('http://example.com/foo/bar/', true, 'http://example.com/foo/bar/bundles/test/foo.png'),
+            array('https://example.com/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
+            array('https://example.com/foo/bar/', true, 'https://example.com/foo/bar/bundles/test/foo.png'),
         );
     }
 

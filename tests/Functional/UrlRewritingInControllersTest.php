@@ -66,16 +66,16 @@ class UrlRewritingInControllersTest extends WebTestCase
     {
         return array(
             array('/foo/bar/', UrlGeneratorInterface::ABSOLUTE_PATH, '/foo/bar/url-rewriting-in-controllers/'),
-            array('/foo/bar/', UrlGeneratorInterface::ABSOLUTE_URL, '/foo/bar/url-rewriting-in-controllers/'),
+            array('/foo/bar/', UrlGeneratorInterface::ABSOLUTE_URL, 'http://backend1.example.com/foo/bar/url-rewriting-in-controllers/'),
             array('/foo/bar/', UrlGeneratorInterface::NETWORK_PATH, '//backend1.example.com/foo/bar/url-rewriting-in-controllers/'),
             array('//example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_PATH, '/foo/bar/url-rewriting-in-controllers/'),
-            array('//example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_URL, '/foo/bar/url-rewriting-in-controllers/'),
+            array('//example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_URL, 'http://example.com/foo/bar/url-rewriting-in-controllers/'),
             array('//example.com/foo/bar/', UrlGeneratorInterface::NETWORK_PATH, '//example.com/foo/bar/url-rewriting-in-controllers/'),
             array('http://example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_PATH, '/foo/bar/url-rewriting-in-controllers/'),
-            array('http://example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_URL, '/foo/bar/url-rewriting-in-controllers/'),
+            array('http://example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_URL, 'http://example.com/foo/bar/url-rewriting-in-controllers/'),
             array('http://example.com/foo/bar/', UrlGeneratorInterface::NETWORK_PATH, '//example.com/foo/bar/url-rewriting-in-controllers/'),
             array('https://example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_PATH, '/foo/bar/url-rewriting-in-controllers/'),
-            array('https://example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_URL, '/foo/bar/url-rewriting-in-controllers/'),
+            array('https://example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_URL, 'https://example.com/foo/bar/url-rewriting-in-controllers/'),
             array('https://example.com/foo/bar/', UrlGeneratorInterface::NETWORK_PATH, '//example.com/foo/bar/url-rewriting-in-controllers/'),
         );
     }
