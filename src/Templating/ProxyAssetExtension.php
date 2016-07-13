@@ -20,7 +20,7 @@ use Symfony\Bridge\Twig\Extension\AssetExtension;
 class ProxyAssetExtension extends AssetExtension
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getAssetUrl($path, $packageName = null, $absolute = false, $version = null)
     {

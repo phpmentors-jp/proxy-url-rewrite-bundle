@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class UrlRewritingInControllersTest extends WebTestCase
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function setUp()
     {
@@ -34,7 +34,7 @@ class UrlRewritingInControllersTest extends WebTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function tearDown()
     {
@@ -44,7 +44,7 @@ class UrlRewritingInControllersTest extends WebTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected static function createKernel(array $options = array())
     {
@@ -77,6 +77,9 @@ class UrlRewritingInControllersTest extends WebTestCase
             array('https://example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_PATH, '/foo/bar/url-rewriting-in-controllers/'),
             array('https://example.com/foo/bar/', UrlGeneratorInterface::ABSOLUTE_URL, 'https://example.com/foo/bar/url-rewriting-in-controllers/'),
             array('https://example.com/foo/bar/', UrlGeneratorInterface::NETWORK_PATH, '//example.com/foo/bar/url-rewriting-in-controllers/'),
+            array('http://example.com:8180/foo/bar/', UrlGeneratorInterface::ABSOLUTE_PATH, '/foo/bar/url-rewriting-in-controllers/'),
+            array('http://example.com:8180/foo/bar/', UrlGeneratorInterface::ABSOLUTE_URL, 'http://example.com:8180/foo/bar/url-rewriting-in-controllers/'),
+            array('http://example.com:8180/foo/bar/', UrlGeneratorInterface::NETWORK_PATH, '//example.com:8180/foo/bar/url-rewriting-in-controllers/'),
         );
     }
 

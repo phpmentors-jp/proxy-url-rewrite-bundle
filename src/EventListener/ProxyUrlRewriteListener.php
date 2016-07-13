@@ -58,19 +58,18 @@ class ProxyUrlRewriteListener
             $matchedProxyUrl = $this->proxyUrlMatcher->match($this->router->getContext()->getPathInfo());
             if ($matchedProxyUrl !== null) {
                 $this->router->getContext()->setBaseUrl($matchedProxyUrl->getPath().$this->router->getContext()->getBaseUrl());
-
-                if ($matchedProxyUrl->getScheme() !== null) {
-                    $this->router->getContext()->setScheme($matchedProxyUrl->getScheme());
-                }
+                $this->router->getContext()->setScheme($matchedProxyUrl->getScheme());
 
                 if ($matchedProxyUrl->getHost() !== null) {
                     $this->router->getContext()->setHost($matchedProxyUrl->getHost());
                 }
 
-                if ($this->router->getContext()->getScheme() == 'http') {
-                    $this->router->getContext()->setHttpPort('80');
-                } elseif ($this->router->getContext()->getScheme() == 'https') {
-                    $this->router->getContext()->setHttpsPort('443');
+                if ($matchedProxyUrl->getPort() !== null) {
+                    if ($this->router->getContext()->getScheme() == 'http') {
+                        $this->router->getContext()->setHttpPort($matchedProxyUrl->getPort());
+                    } elseif ($this->router->getContext()->getScheme() == 'https') {
+                        $this->router->getContext()->setHttpsPort($matchedProxyUrl->getPort());
+                    }
                 }
             }
         }

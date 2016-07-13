@@ -16,12 +16,11 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class UrlRewritingInTemplatesTest extends WebTestCase
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function setUp()
     {
@@ -34,7 +33,7 @@ class UrlRewritingInTemplatesTest extends WebTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function tearDown()
     {
@@ -44,7 +43,7 @@ class UrlRewritingInTemplatesTest extends WebTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected static function createKernel(array $options = array())
     {
@@ -75,6 +74,10 @@ class UrlRewritingInTemplatesTest extends WebTestCase
             array('http://example.com/foo/bar/', true, 'http://example.com/foo/bar/bundles/test/foo.png'),
             array('https://example.com/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
             array('https://example.com/foo/bar/', true, 'https://example.com/foo/bar/bundles/test/foo.png'),
+            array('http://example.com:8180/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
+            array('http://example.com:8180/foo/bar/', true, 'http://example.com:8180/foo/bar/bundles/test/foo.png'),
+            array('https://example.com:8180/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
+            array('https://example.com:8180/foo/bar/', true, 'https://example.com:8180/foo/bar/bundles/test/foo.png'),
         );
     }
 

@@ -25,9 +25,9 @@ class ProxyUrlFactory implements ServiceInterface
      */
     public function create($proxyUrlId, $path, $proxyUrl)
     {
-        list($proxyUrlPath, $proxyUrlHost, $proxyUrlScheme) = static::parseUrl($proxyUrl);
+        list($proxyUrlPath, $proxyUrlHost, $proxyUrlScheme, $proxyUrlPort) = static::parseUrl($proxyUrl);
 
-        return new ProxyUrl($proxyUrlId, $path, $proxyUrlPath, $proxyUrlHost, $proxyUrlScheme);
+        return new ProxyUrl($proxyUrlId, $path, $proxyUrlPath, $proxyUrlHost, $proxyUrlScheme, $proxyUrlPort);
     }
 
     /**
@@ -46,13 +46,10 @@ class ProxyUrlFactory implements ServiceInterface
             throw new \UnexpectedValueException(sprintf('The proxy URL "%s" is malformed.', $url));
         }
 
-        if (array_key_exists('port', $components)) {
-            throw new \UnexpectedValueException(sprintf('The proxy URL "%s" cannot contain port number.', $url));
-        }
-
         $path = array_key_exists('path', $components) ? $components['path'] : null;
         $host = array_key_exists('host', $components) ? $components['host'] : null;
         $scheme = array_key_exists('scheme', $components) ? $components['scheme'] : null;
+        $port = array_key_exists('port', $components) ? $components['port'] : null;
 
         if (strpos($path, '//') === 0) {
             $endOfHostPosition = strpos($path, '/', 2);
@@ -67,6 +64,6 @@ class ProxyUrlFactory implements ServiceInterface
             }
         }
 
-        return array($path, $host, $scheme);
+        return array($path, $host, $scheme, $port);
     }
 }
