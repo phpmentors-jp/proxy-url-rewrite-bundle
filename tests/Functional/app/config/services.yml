@@ -1,0 +1,6 @@
+parameters:
+    phpmentors_proxy_url_rewrite_test.proxy_host_filter.class: "PHPMentors\\ProxyURLRewriteBundle\\Functional\\Bundle\\TestBundle\\ProxyUrl\\ProxyHostFilter"
+
+services:
+    phpmentors_proxy_url_rewrite_test.proxy_host_filter:
+        class: "%phpmentors_proxy_url_rewrite_test.proxy_host_filter.class%"
