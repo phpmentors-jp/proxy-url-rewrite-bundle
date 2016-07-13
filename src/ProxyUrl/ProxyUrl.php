@@ -129,6 +129,8 @@ class ProxyUrl implements EntityInterface, IdentifiableInterface
 
     /**
      * @return int
+     *
+     * @since Method available since Release 1.2.0
      */
     public function getPort()
     {
