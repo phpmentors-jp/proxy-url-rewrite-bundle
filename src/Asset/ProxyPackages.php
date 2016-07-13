@@ -71,8 +71,14 @@ class ProxyPackages extends Packages
         if ($matchedProxyUrl->getHost() !== null) {
             $requestContext->setHost($matchedProxyUrl->getHost());
         }
-        if ($matchedProxyUrl->getScheme() !== null) {
-            $requestContext->setScheme($matchedProxyUrl->getScheme());
+        $requestContext->setScheme($matchedProxyUrl->getScheme());
+
+        if ($matchedProxyUrl->getPort() !== null) {
+            if ($matchedProxyUrl->getScheme() == 'http') {
+                $requestContext->setHttpPort($matchedProxyUrl->getPort());
+            } elseif ($matchedProxyUrl->getScheme() == 'https') {
+                $requestContext->setHttpsPort($matchedProxyUrl->getPort());
+            }
         }
 
         $urlGenerator = new UrlGenerator($routeCollection, $requestContext);

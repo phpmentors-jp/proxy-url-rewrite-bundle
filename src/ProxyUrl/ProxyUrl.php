@@ -45,19 +45,42 @@ class ProxyUrl implements EntityInterface, IdentifiableInterface
     private $target;
 
     /**
+     * @var int
+     *
+     * @since Property available since Release 1.2.0
+     */
+    private $port;
+
+    /**
      * @param int|string $id
      * @param string     $target
      * @param string     $path
      * @param string     $host
      * @param string     $scheme
+     * @param int        $port
      */
-    public function __construct($id, $target, $path, $host, $scheme)
+    public function __construct($id, $target, $path, $host, $scheme, $port)
     {
         $this->id = $id;
         $this->target = $target;
         $this->path = rtrim($path, '/');
         $this->host = $host;
-        $this->scheme = $scheme;
+
+        if ($scheme === null) {
+            $this->scheme = 'http';
+        } else {
+            $this->scheme = $scheme;
+        }
+
+        if ($port === null) {
+            if ($this->scheme == 'http') {
+                $this->port = 80;
+            } elseif ($this->scheme == 'https') {
+                $this->port = 443;
+            }
+        } else {
+            $this->port = $port;
+        }
     }
 
     /**
@@ -102,5 +125,13 @@ class ProxyUrl implements EntityInterface, IdentifiableInterface
     public function getTarget()
     {
         return $this->target;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPort()
+    {
+        return $this->port;
     }
 }

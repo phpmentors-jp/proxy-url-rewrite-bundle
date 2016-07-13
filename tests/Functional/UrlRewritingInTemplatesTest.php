@@ -75,6 +75,10 @@ class UrlRewritingInTemplatesTest extends WebTestCase
             array('http://example.com/foo/bar/', true, 'http://example.com/foo/bar/bundles/test/foo.png'),
             array('https://example.com/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
             array('https://example.com/foo/bar/', true, 'https://example.com/foo/bar/bundles/test/foo.png'),
+            array('http://example.com:8180/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
+            array('http://example.com:8180/foo/bar/', true, 'http://example.com:8180/foo/bar/bundles/test/foo.png'),
+            array('https://example.com:8180/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
+            array('https://example.com:8180/foo/bar/', true, 'https://example.com:8180/foo/bar/bundles/test/foo.png'),
         );
     }
 
