@@ -43,7 +43,7 @@ class ProxyPackages extends Packages
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getUrl($path, $packageName = null)
     {

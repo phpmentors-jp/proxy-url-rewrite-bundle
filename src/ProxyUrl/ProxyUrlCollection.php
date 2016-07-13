@@ -23,7 +23,7 @@ class ProxyUrlCollection implements EntityCollectionInterface
     private $proxyUrls = array();
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function add(EntityInterface $entity)
     {
@@ -33,7 +33,7 @@ class ProxyUrlCollection implements EntityCollectionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function count()
     {
@@ -41,7 +41,7 @@ class ProxyUrlCollection implements EntityCollectionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getIterator()
     {
@@ -49,7 +49,7 @@ class ProxyUrlCollection implements EntityCollectionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function get($key)
     {
@@ -61,7 +61,7 @@ class ProxyUrlCollection implements EntityCollectionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function remove(EntityInterface $entity)
     {
@@ -69,7 +69,7 @@ class ProxyUrlCollection implements EntityCollectionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function toArray()
     {

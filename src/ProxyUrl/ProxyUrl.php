@@ -92,7 +92,7 @@ class ProxyUrl implements EntityInterface, IdentifiableInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @return int|string
      *
