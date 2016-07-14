@@ -17,15 +17,20 @@ use PHPMentors\DomainKata\Service\ServiceInterface;
 class ProxyUrlFactory implements ServiceInterface
 {
     /**
-     * @param int|string $proxyUrlId
-     * @param string     $path
-     * @param string     $proxyUrl
+     * @param int|string               $proxyUrlId
+     * @param string                   $path
+     * @param string                   $proxyUrl
+     * @param ProxyHostFilterInterface $hostFilterService
      *
      * @return ProxyUrl
      */
-    public function create($proxyUrlId, $path, $proxyUrl)
+    public function create($proxyUrlId, $path, $proxyUrl, ProxyHostFilterInterface $proxyHostFilter = null)
     {
         list($proxyUrlPath, $proxyUrlHost, $proxyUrlScheme, $proxyUrlPort) = static::parseUrl($proxyUrl);
+
+        if ($proxyHostFilter !== null) {
+            $proxyUrlHost = $proxyHostFilter->filter($proxyUrlHost);
+        }
 
         return new ProxyUrl($proxyUrlId, $path, $proxyUrlPath, $proxyUrlHost, $proxyUrlScheme, $proxyUrlPort);
     }

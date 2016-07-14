@@ -51,7 +51,7 @@ class PHPMentorsProxyURLRewriteExtension extends Extension
         if ($config['enabled']) {
             foreach ($config['proxy_urls'] as $id => $proxyUrl) {
                 $definition = new DefinitionDecorator('phpmentors_proxy_url_rewrite.proxy_url');
-                $definition->setArguments(array($id, $proxyUrl['path'], $proxyUrl['proxy_url']));
+                $definition->setArguments(array($id, $proxyUrl['path'], $proxyUrl['proxy_url'], $proxyUrl['proxy_host_filter_service'] === null ? null : new Reference($proxyUrl['proxy_host_filter_service'])));
 
                 $serviceId = 'phpmentors_proxy_url_rewrite.proxy_url.'.sha1($id);
                 $container->setDefinition($serviceId, $definition);
