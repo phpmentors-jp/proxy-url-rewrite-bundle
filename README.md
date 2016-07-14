@@ -34,7 +34,7 @@ Second, add `PHPMentorsProxyURLRewriteBundle` into your bundles to register in `
 
 ```php
 ...
- 
+
 class AppKernel extends Kernel
 {
     public function registerBundles()
