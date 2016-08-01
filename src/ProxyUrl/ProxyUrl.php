@@ -52,14 +52,22 @@ class ProxyUrl implements EntityInterface, IdentifiableInterface
     private $port;
 
     /**
-     * @param int|string $id
-     * @param string     $target
-     * @param string     $path
-     * @param string     $host
-     * @param string     $scheme
-     * @param int        $port
+     * @var ProxyHostFilterInterface
+     *
+     * @since Property available since Release 1.2.0
      */
-    public function __construct($id, $target, $path, $host, $scheme, $port)
+    private $proxyHostFilter;
+
+    /**
+     * @param int|string               $id
+     * @param string                   $target
+     * @param string                   $path
+     * @param string                   $host
+     * @param string                   $scheme
+     * @param int                      $port
+     * @param ProxyHostFilterInterface $proxyHostFilter
+     */
+    public function __construct($id, $target, $path, $host, $scheme, $port, ProxyHostFilterInterface $proxyHostFilter = null)
     {
         $this->id = $id;
         $this->target = $target;
@@ -81,6 +89,8 @@ class ProxyUrl implements EntityInterface, IdentifiableInterface
         } else {
             $this->port = $port;
         }
+
+        $this->proxyHostFilter = $proxyHostFilter;
     }
 
     /**
@@ -88,7 +98,11 @@ class ProxyUrl implements EntityInterface, IdentifiableInterface
      */
     public function getHost()
     {
-        return $this->host;
+        if ($this->proxyHostFilter === null) {
+            return $this->host;
+        } else {
+            return $this->proxyHostFilter->filter($this->host);
+        }
     }
 
     /**

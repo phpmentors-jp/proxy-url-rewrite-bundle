@@ -28,11 +28,7 @@ class ProxyUrlFactory implements ServiceInterface
     {
         list($proxyUrlPath, $proxyUrlHost, $proxyUrlScheme, $proxyUrlPort) = static::parseUrl($proxyUrl);
 
-        if ($proxyHostFilter !== null) {
-            $proxyUrlHost = $proxyHostFilter->filter($proxyUrlHost);
-        }
-
-        return new ProxyUrl($proxyUrlId, $path, $proxyUrlPath, $proxyUrlHost, $proxyUrlScheme, $proxyUrlPort);
+        return new ProxyUrl($proxyUrlId, $path, $proxyUrlPath, $proxyUrlHost, $proxyUrlScheme, $proxyUrlPort, $proxyHostFilter);
     }
 
     /**
