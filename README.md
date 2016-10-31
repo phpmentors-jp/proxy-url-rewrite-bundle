@@ -21,13 +21,13 @@ First, add the dependency to `phpmentors/proxy-url-rewrite-bundle` into your `co
 Stable version:
 
 ```
-composer require phpmentors/proxy-url-rewrite-bundle "1.1.*"
+composer require phpmentors/proxy-url-rewrite-bundle "1.2.*"
 ```
 
 Development version:
 
 ```
-composer require phpmentors/proxy-url-rewrite-bundle "~1.2@dev"
+composer require phpmentors/proxy-url-rewrite-bundle "~1.3@dev"
 ```
 
 Second, add `PHPMentorsProxyURLRewriteBundle` into your bundles to register in `AppKernel::registerBundles()` as the following:
