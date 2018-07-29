@@ -68,17 +68,12 @@ class UrlRewritingInTemplatesTest extends WebTestCase
     public function rewriteUrlInAssetData()
     {
         return array(
-            array('/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
-            array('//example.com/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
-            array('//example.com/foo/bar/', true, 'http://example.com/foo/bar/bundles/test/foo.png'),
-            array('http://example.com/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
-            array('http://example.com/foo/bar/', true, 'http://example.com/foo/bar/bundles/test/foo.png'),
-            array('https://example.com/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
-            array('https://example.com/foo/bar/', true, 'https://example.com/foo/bar/bundles/test/foo.png'),
-            array('http://example.com:8180/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
-            array('http://example.com:8180/foo/bar/', true, 'http://example.com:8180/foo/bar/bundles/test/foo.png'),
-            array('https://example.com:8180/foo/bar/', false, '/foo/bar/bundles/test/foo.png'),
-            array('https://example.com:8180/foo/bar/', true, 'https://example.com:8180/foo/bar/bundles/test/foo.png'),
+            array('/foo/bar/', '/foo/bar/bundles/test/foo.png'),
+            array('//example.com/foo/bar/', '/foo/bar/bundles/test/foo.png'),
+            array('http://example.com/foo/bar/', '/foo/bar/bundles/test/foo.png'),
+            array('https://example.com/foo/bar/', '/foo/bar/bundles/test/foo.png'),
+            array('http://example.com:8180/foo/bar/', '/foo/bar/bundles/test/foo.png'),
+            array('https://example.com:8180/foo/bar/', '/foo/bar/bundles/test/foo.png'),
         );
     }
 
@@ -86,7 +81,7 @@ class UrlRewritingInTemplatesTest extends WebTestCase
      * @test
      * @dataProvider rewriteUrlInAssetData
      */
-    public function rewriteUrlInAsset($proxyUrl, $referenceType, $rewroteUrl)
+    public function rewriteUrlInAsset($proxyUrl, $rewroteUrl)
     {
         $client = $this->createClient(array('config' => function (ContainerBuilder $container) use ($proxyUrl) {
             $container->loadFromExtension('framework', array(
@@ -102,7 +97,7 @@ class UrlRewritingInTemplatesTest extends WebTestCase
             ));
         }));
 
-        $client->request('GET', sprintf('http://backend1.example.com:8080/url-rewriting-in-templates/?referenceType=%s', $referenceType));
+        $client->request('GET', 'http://backend1.example.com:8080/url-rewriting-in-templates/');
 
         $this->assertThat($client->getResponse()->getStatusCode(), $this->equalTo(200), $client->getResponse()->getContent());
         $this->assertThat($client->getCrawler()->filterXpath("//*[@id='asset']")->text(), $this->equalTo($rewroteUrl));

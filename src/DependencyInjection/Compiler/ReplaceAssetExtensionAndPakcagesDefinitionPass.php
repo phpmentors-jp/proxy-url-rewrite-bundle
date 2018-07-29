@@ -23,9 +23,6 @@ class ReplaceAssetExtensionAndPakcagesDefinitionPass implements CompilerPassInte
     public function process(ContainerBuilder $container)
     {
         if ($container->hasDefinition('twig.extension.assets') && $container->hasDefinition('assets.packages')) {
-            $container->getDefinition('phpmentors_proxy_url_rewrite.proxy_asset_extension')->setArguments($container->getDefinition('twig.extension.assets')->getArguments());
-            $container->setAlias('twig.extension.assets', 'phpmentors_proxy_url_rewrite.proxy_asset_extension');
-
             $container->getDefinition('phpmentors_proxy_url_rewrite.proxy_packages')->setArguments($container->getDefinition('assets.packages')->getArguments());
             $container->setAlias('assets.packages', 'phpmentors_proxy_url_rewrite.proxy_packages');
         }
