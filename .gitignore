@@ -1,4 +1,9 @@
+/.buildpath
 /.composer/
+/.idea/
+/.php_cs.cache
+/.project
+/.settings/
 /composer.lock
 /composer.phar
 /docker-compose.yml
@@ -9,3 +14,4 @@
 /tests/Feature/app/logs/*
 !/tests/Feature/app/cache/.gitkeep
 !/tests/Feature/app/logs/.gitkeep
+*.iml

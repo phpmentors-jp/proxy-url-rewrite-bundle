@@ -31,7 +31,8 @@ class HostFilterTest extends WebTestCase
         parent::setUp();
 
         $_SERVER['KERNEL_DIR'] = __DIR__.'/app';
-        $_SERVER['SYMFONY__SECRET'] = hash('sha1', uniqid(mt_rand()));
+        require_once $_SERVER['KERNEL_DIR'].'/AppKernel.php';
+        $_SERVER['KERNEL_CLASS'] = 'AppKernel';
 
         $this->removeCacheDir();
     }
@@ -100,6 +101,9 @@ class HostFilterTest extends WebTestCase
                 $config['proxy_host_filter_service'] = 'phpmentors_proxy_url_rewrite_test.proxy_host_filter';
             }
 
+            $container->loadFromExtension('framework', array(
+                'secret' => '$ecret',
+            ));
             $container->loadFromExtension('phpmentors_proxy_url_rewrite', array(
                 'proxy_urls' => array(
                     'foo' => $config,
