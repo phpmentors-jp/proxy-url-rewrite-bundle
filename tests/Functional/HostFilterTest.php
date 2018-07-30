@@ -107,7 +107,7 @@ class HostFilterTest extends WebTestCase
             $container->loadFromExtension('phpmentors_proxy_url_rewrite', array(
                 'proxy_urls' => array(
                     'foo' => $config,
-            )));
+            ), ));
         }));
 
         $client->request('GET', sprintf('http://backend1.example.com:8080/url-rewriting-in-controllers/?referenceType=%s', UrlGeneratorInterface::ABSOLUTE_URL));
