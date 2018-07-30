@@ -1,4 +1,4 @@
-# PHPMentorsProxyURLRewriteBundle
+# ProxyURLRewriteBundle
 
 A Symfony bundle to rewrite URLs for applications behind reverse proxies
 
@@ -14,7 +14,7 @@ A Symfony bundle to rewrite URLs for applications behind reverse proxies
 
 ## Installation
 
-`PHPMentorsProxyURLRewriteBundle` can be installed using [Composer](http://getcomposer.org/).
+ProxyURLRewriteBundle can be installed using [Composer](http://getcomposer.org/).
 
 First, add the dependency to `phpmentors/proxy-url-rewrite-bundle` into your `composer.json` file as the following:
 
