@@ -12,60 +12,14 @@
 
 namespace PHPMentors\ProxyURLRewriteBundle\Functional;
 
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @since Class available since Release 1.2.0
  */
-class HostFilterTest extends WebTestCase
+class HostFilterTest extends AbstractTestCase
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-
-        $_SERVER['KERNEL_DIR'] = __DIR__.'/app';
-        require_once $_SERVER['KERNEL_DIR'].'/AppKernel.php';
-        $_SERVER['KERNEL_CLASS'] = 'AppKernel';
-
-        $this->removeCacheDir();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function tearDown()
-    {
-        parent::tearDown();
-
-        $this->removeCacheDir();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected static function createKernel(array $options = array())
-    {
-        $kernel = KernelTestCase::createKernel($options);
-        if (array_key_exists('config', $options)) {
-            $kernel->setConfig($options['config']);
-        }
-
-        return $kernel;
-    }
-
-    protected function removeCacheDir()
-    {
-        $fileSystem = new Filesystem();
-        $fileSystem->remove($_SERVER['KERNEL_DIR'].'/cache/test');
-    }
-
     public function filterData()
     {
         return array(

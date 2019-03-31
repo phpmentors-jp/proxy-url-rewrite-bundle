@@ -7,6 +7,7 @@
     <parameter key="phpmentors_proxy_url_rewrite.proxy_url_factory.class">PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlFactory</parameter>
     <parameter key="phpmentors_proxy_url_rewrite.proxy_url_matcher.class">PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlMatcher</parameter>
     <parameter key="phpmentors_proxy_url_rewrite.proxy_url_rewrite_listener.class">PHPMentors\ProxyURLRewriteBundle\EventListener\ProxyUrlRewriteListener</parameter>
+    <parameter key="phpmentors_proxy_url_rewrite.trailing_slash_redirection_listener.class">PHPMentors\ProxyURLRewriteBundle\EventListener\TrailingSlashRedirectionListener</parameter>
   </parameters>
   <services>
     <service id="phpmentors_proxy_url_rewrite.proxy_packages" class="%phpmentors_proxy_url_rewrite.proxy_packages.class%" public="false">
@@ -30,6 +31,9 @@
         <argument type="service" id="router"/>
       </call>
       <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="16"/>
+    </service>
+    <service id="phpmentors_proxy_url_rewrite.trailing_slash_redirection_listener" class="%phpmentors_proxy_url_rewrite.trailing_slash_redirection_listener.class%">
+      <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController"/>
     </service>
   </services>
 </container>

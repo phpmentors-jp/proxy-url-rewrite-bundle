@@ -7,3 +7,13 @@ test_url_rewriting_in_templates_index:
     path: /url-rewriting-in-templates/
     defaults: { _controller: "TestBundle:UrlRewritingInTemplates:index" }
     methods: [GET]
+
+test_trailing_slash_redirection_with_slash_index:
+    path: /trailing-slash-redirection-with-slash/
+    defaults: { _controller: "TestBundle:TrailingSlashRedirection:index" }
+    methods: [GET]
+
+test_trailing_slash_redirection_without_slash_index:
+    path: /trailing-slash-redirection-without-slash
+    defaults: { _controller: "TestBundle:TrailingSlashRedirection:index" }
+    methods: [GET]
