@@ -23,8 +23,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('phpmentors_proxy_url_rewrite')
+        $treeBuilder = new TreeBuilder('phpmentors_proxy_url_rewrite');
+        $treeBuilder->getRootNode()
             ->canBeEnabled()
             ->fixXmlConfig('proxy_url')
             ->children()
