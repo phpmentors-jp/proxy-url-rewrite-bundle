@@ -23,8 +23,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('phpmentors_proxy_url_rewrite')
+        $treeBuilder = new TreeBuilder('phpmentors_proxy_url_rewrite');
+        $treeBuilder->getRootNode()
             ->canBeEnabled()
             ->fixXmlConfig('proxy_url')
             ->children()
@@ -38,17 +38,6 @@ class Configuration implements ConfigurationInterface
                             ->scalarNode('proxy_url')
                                 ->isRequired()
                                 ->cannotBeEmpty()
-                                ->validate()
-                                    ->always(function ($v) {
-                                        try {
-                                            ProxyUrlFactory::parseUrl($v);
-                                        } catch (\UnexpectedValueException $e) {
-                                            throw new \InvalidArgumentException($e->getMessage());
-                                        }
-
-                                        return $v;
-                                    })
-                                ->end()
                             ->end()
                             ->scalarNode('proxy_host_filter_service')
                                 ->defaultNull()

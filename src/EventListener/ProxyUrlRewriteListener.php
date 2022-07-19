@@ -14,6 +14,7 @@ namespace PHPMentors\ProxyURLRewriteBundle\EventListener;
 
 use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlMatcher;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -50,9 +51,9 @@ class ProxyUrlRewriteListener
     }
 
     /**
-     * @param GetResponseEvent $event
+     * @param RequestEvent $event
      */
-    public function onKernelRequest(GetResponseEvent $event)
+    public function onKernelRequest(RequestEvent $event)
     {
         if ($event->getRequestType() == HttpKernelInterface::MASTER_REQUEST) {
             $matchedProxyUrl = $this->proxyUrlMatcher->match($this->router->getContext()->getPathInfo());

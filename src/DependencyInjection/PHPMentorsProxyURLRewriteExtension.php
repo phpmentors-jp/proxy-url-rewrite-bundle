@@ -12,6 +12,7 @@
 
 namespace PHPMentors\ProxyURLRewriteBundle\DependencyInjection;
 
+use PHPMentors\ProxyURLRewriteBundle\ProxyUrl\ProxyUrlFactory;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -49,6 +50,13 @@ class PHPMentorsProxyURLRewriteExtension extends Extension
     {
         if ($config['enabled']) {
             foreach ($config['proxy_urls'] as $id => $proxyUrl) {
+
+                try{
+                    ProxyUrlFactory::parseUrl($proxyUrl['path']);
+                } catch (\UnexpectedValueException $e) {
+                    throw new \InvalidArgumentException($e->getMessage());
+                }
+
                 if (class_exists('Symfony\Component\DependencyInjection\ChildDefinition')) {
                     $definitionClass = 'Symfony\Component\DependencyInjection\ChildDefinition';
                 } else {
